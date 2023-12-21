@@ -161,3 +161,7 @@ cython_debug/
 
 # Model
 model
+
+# Metadata and voices
+metadata
+audio
