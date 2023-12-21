@@ -1,9 +1,21 @@
-from dotenv import load_dotenv
 import os
-import pandas as pd
+import numpy as np
+from dotenv import load_dotenv
+from fastapi import FastAPI
+from tensorflow.keras.models import load_model
 
+# Initialization
 load_dotenv()
-metadata_path = os.getenv('METADATA_PATH')
-metadata = pd.read_csv(metadata_path, sep='|', header=None, names=['ID', 'Text', 'Normalized Text', 'Source'])
-print(metadata_path)
-print(metadata.head())
+model_path = os.getenv('MODEL_PATH')
+model = load_model(model_path)
+app = FastAPI()
+
+@app.get('/')
+async def greet():
+    results = {
+        'status': 200,
+        'data': {
+            'message': 'Hello, Optimiz!'
+        }
+    }
+    return results
