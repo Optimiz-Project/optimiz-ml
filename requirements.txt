@@ -5,3 +5,5 @@ numpy
 scipy
 tensorflow
 librosa
+h5py
+python-multipart
